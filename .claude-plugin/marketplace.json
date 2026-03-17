@@ -1,0 +1,16 @@
+{
+  "id": "sync-vault-skills",
+  "type": "obsidian-skill",
+  "name": "Sync Vault Skills",
+  "version": "1.10.6",
+  "description": "Agent skills for Sync Vault. Manage Baidu, Aliyun, and Quark disks with AI.",
+  "author": "Camus Qiu",
+  "repository": "https://github.com/abcamus/sync-vault-skills",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "cloud-file",
+      "path": "skills/cloud-file/SKILL.md"
+    }
+  ]
+}
