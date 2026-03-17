@@ -1,0 +1,5 @@
+{
+  "name": "sync-vault-skills",
+  "description": "Agent skills for Sync Vault. Manage Baidu, Aliyun, and Quark disks with AI.",
+  "version": "1.10.6"
+}
