@@ -9,7 +9,7 @@ These skills follow the [Agent Skills specification](https://github.com/kepano/a
 ### Marketplace
 ```bash
 /plugin marketplace add abcamus/sync-vault-skills
-/plugin install obsidian@sync-vault-skills
+/plugin install sync-vault-skills
 ```
 
 ### npx
