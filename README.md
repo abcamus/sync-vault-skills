@@ -34,7 +34,8 @@ Copy the `skills/` directory into your Codex skills path (typically `~/.codex/sk
 
 | Skill | Description |
 | :--- | :--- |
-| [**cloud-file**](./cloud-file/SKILL.md) | Search, list, and manage files and account information in cloud storage (Baidu, Aliyun, Quark, etc.) |
+| [**cloud-file**](./skills/cloud-file/SKILL.md) | Search, list, and manage files and account information in cloud storage (Baidu, Aliyun, Quark, etc.) |
+| [**video-note**](./skills/video-note/SKILL.md) | Manage video annotations, timestamps, and playback links in Sync Vault. Supports AI note conversion for Quark and Baidu. |
 
 ## Requirements
 

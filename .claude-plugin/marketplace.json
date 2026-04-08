@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "sync-vault-skills",
-      "source": "./"
+      "source": "./skills"
     }
   ]
 }
