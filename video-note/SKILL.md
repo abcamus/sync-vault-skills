@@ -1,6 +1,6 @@
 ---
 name: video-note
-description: Manage video annotations, timestamps, and playback links in Sync Vault. Use this skill whenever a user wants to record a note for a video, search for existing timestamps, or jump to a specific moment in a cloud video.
+description: Manage video annotations, timestamps, and playback links in Sync Vault. Use this skill whenever a user wants to RECORD a note for a video, SEARCH for existing timestamps, JUMP to a specific moment, or CONVERT/FORMAT external AI notes/summaries from Baidu or Quark disks into Sync Vault's timestamp notation.
 metadata:
   author: sync vault
   version: 1.0.0
@@ -10,12 +10,19 @@ metadata:
 # Sync Vault Video Annotation & Navigation Expert
 
 ## Role & Responsibilities
-You are an expert in the Sync Vault video note-taking ecosystem. You MUST trigger this skill whenever a user:
-1. **Records a Note**: Wants to save a specific moment (timestamp) with a description.
-2. **Searches Annotations**: Looks for "where did I mention X in a video?" or "list all my video notes".
-3. **AI Note & Summary Conversion**: Automatically transforms raw AI-generated notes or long summaries from Quark or Baidu into clickable Sync Vault links.
-4. **Navigates Video**: Requests to open a video at a specific time or "jump to 05:20".
+You are an expert in the Sync Vault video note-taking ecosystem. You MUST trigger this skill whenever a user mentions video timestamps, seek links, or requests to:
+1. **Record a Note**: Wants to save a specific moment (timestamp) with a description.
+2. **Search Annotations**: Looks for "where did I mention X in a video?" or "list all my video notes".
+3. **Convert AI Summaries/Notes**: Transforms raw AI-generated text, summaries, or meeting minutes from Quark or Baidu into clickable Sync Vault links.
+4. **Navigate Video**: Requests to open a video at a specific time or "jump to 05:20".
 5. **Canvas Integration**: Manages video notes within Obsidian Canvas files.
+
+## Trigger Phrases
+- "转换这段百度网盘 AI 笔记"
+- "把夸克视频总结转成时间戳格式"
+- "Format these video notes for Sync Vault"
+- "AI 总结转时间戳"
+- "记下这个视频的时间点"
 
 ## Syntax Specifications
 
@@ -46,6 +53,8 @@ Sync Vault can convert notes or AI-generated summaries from cloud disk assistant
 ## Workflow Instructions
 
 1. **Trigger Recognition**:
+    - "转换这段从[网盘名]复制的 AI 总结..." -> AI Summary Conversion.
+    - "把这段笔记格式化成视频跳转链接..." -> AI Note Conversion.
     - "记一下，这个视频 12 分钟的时候提到了..." -> Record Note.
     - "搜索所有关于‘博弈论’的视频笔记" -> Search Annotations.
     - "打开网盘里的课程视频，跳到上次看的地方" -> Navigate.

@@ -1,5 +1,28 @@
 {
   "name": "sync-vault-skills",
-  "description": "Agent skills for Sync Vault. Manage Baidu, Aliyun, and Quark disks with AI.",
-  "version": "1.10.6"
+  "displayName": "Sync Vault Skills",
+  "description": "Agent skills for Sync Vault. Search/list cloud files, check account status, and manage video-note timestamps in Obsidian.",
+  "version": "1.10.6",
+  "author": {
+    "name": "Camus Qiu",
+    "url": "https://kqiu.top"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:abcamus/sync-vault-skills.git"
+  },
+  "homepage": "https://github.com/abcamus/sync-vault-skills",
+  "license": "MIT",
+  "keywords": [
+    "sync-vault",
+    "obsidian",
+    "agent-skill",
+    "cloud-storage",
+    "mcp",
+    "video-note"
+  ],
+  "skills": [
+    "cloud-file",
+    "video-note"
+  ]
 }
