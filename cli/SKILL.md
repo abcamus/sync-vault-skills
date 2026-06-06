@@ -1,6 +1,6 @@
 ---
 name: "sync-vault-cli"
-description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doctor/config/device). Invoke when user wants to inspect/search/read cloud files or diagnose Sync Vault from the CLI."
+description: "Use Sync Vault CLI commands (obsidian sync-vault:list/search/read/info/doctor/config/device). Invoke when user wants to inspect/search/read cloud files or diagnose Sync Vault from the CLI."
 ---
 
 # Sync Vault CLI
@@ -10,7 +10,7 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 ## 适用范围与前提
 
 - 适用：Obsidian Sync Vault 插件已加载且已注册 CLI handler（Obsidian 版本需要支持 `registerCliHandler`）。
-- 命令形式：`sync-vault:<subcommand> key=value key2=value2`（所有子命令都支持 `help=true`）。
+- 命令形式：`obsidian sync-vault:<subcommand> key=value key2=value2`（所有子命令都支持 `help=true`）。
 - 输出形式：
   - `list/search/info/doctor`：输出为 **JSON 字符串**（可直接解析）。
   - `read`：输出为文本（可能被套餐截断；PDF 在 Free 下会拒绝）。
@@ -21,15 +21,15 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 
 ## 快速自检工作流（推荐顺序）
 
-1. `sync-vault`：列出可用命令（确认 CLI 已可用）
-2. `sync-vault:info cloud=<cloud>`：确认账号可用/容量健康
+1. `obsidian sync-vault`：列出可用命令（确认 CLI 已可用）
+2. `obsidian sync-vault:info cloud=<cloud>`：确认账号可用/容量健康
 3. 文件发现优先：
-   - 有关键词：`sync-vault:search ...`
-   - Provider 不支持 search 或想要稳定遍历：`sync-vault:list ...`
-4. 内容读取：`sync-vault:read path=<filePath> cloud=<cloud>`
+   - 有关键词：`obsidian sync-vault:search ...`
+   - Provider 不支持 search 或想要稳定遍历：`obsidian sync-vault:list ...`
+4. 内容读取：`obsidian sync-vault:read path=<filePath> cloud=<cloud>`
 
 如遇异常或用户反馈“同步失败/打不开/很慢”：
-- `sync-vault:doctor cloud=<cloud>` 获取诊断报告（JSON）
+- `obsidian sync-vault:doctor cloud=<cloud>` 获取诊断报告（JSON）
 
 ## 云类型（cloud 参数）
 
@@ -41,12 +41,12 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 
 ### 1) 帮助
 
-- 主帮助：`sync-vault`
-- 子命令帮助：`sync-vault:list help=true`（任意子命令都支持）
+- 主帮助：`obsidian sync-vault`
+- 子命令帮助：`obsidian sync-vault:list help=true`（任意子命令都支持）
 
 ### 2) list：列出目录文件（支持过滤/递归/分页）
 
-`sync-vault:list path=<path> cloud=<cloud> limit=<n> offset=<n> type=<type> minSize=<bytes> modifiedAfter=<iso|ms> recursive=true|false`
+`obsidian sync-vault:list path=<path> cloud=<cloud> limit=<n> offset=<n> type=<type> minSize=<bytes> modifiedAfter=<iso|ms> recursive=true|false`
 
 - `path`：默认 `/`
 - `type`：`markdown|md|pdf|image|video|audio|folder|text...`
@@ -61,7 +61,7 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 
 ### 3) search：关键词检索（文件级，不读内容）
 
-`sync-vault:search query=<keyword> cloud=<cloud> limit=<n> offset=<n> path=<prefix> type=<type>`
+`obsidian sync-vault:search query=<keyword> cloud=<cloud> limit=<n> offset=<n> path=<prefix> type=<type>`
 
 - 约束：至少提供 `query/type/path` 之一，否则会返回结构化错误。
 - Provider 不支持 search 时：通常会返回 `isError=true`，并给出建议改用 `list`。
@@ -71,20 +71,20 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 
 ### 4) read：读取文件内容（文本/部分二进制会按文本解码；PDF 特殊）
 
-`sync-vault:read path=<filePath> cloud=<cloud>`
+`obsidian sync-vault:read path=<filePath> cloud=<cloud>`
 
 - `path` 必填。
 - PDF：Free 会拒绝；Pro 会尝试流式解析并抽取前若干页文本（最多 20 页）。
 
 ### 5) info：账号与容量信息（执行任何批量任务前建议先跑）
 
-`sync-vault:info cloud=<cloud>`
+`obsidian sync-vault:info cloud=<cloud>`
 
 - 输出为 JSON（包含 token 状态、容量、告警等）。适合在自动化流程里作为“预检查”。
 
 ### 6) doctor：诊断 Sync Vault 状态（网络/登录/容量/同步/Relay）
 
-`sync-vault:doctor cloud=<cloud>`
+`obsidian sync-vault:doctor cloud=<cloud>`
 
 - 输出为 JSON，包含：
   - `checks[]`（每项包含 category/status/severity/message/fixHint）
@@ -94,8 +94,8 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 
 ### 7) config：查看/设置插件配置（谨慎使用）
 
-- 列出（会过滤敏感字段）：`sync-vault:config action=ls`
-- 设置：`sync-vault:config action=set key=<key> value=<value>`
+- 列出（会过滤敏感字段）：`obsidian sync-vault:config action=ls`
+- 设置：`obsidian sync-vault:config action=set key=<key> value=<value>`
 
 安全约束（必须遵守）：
 - 不要在未获得用户明确同意时执行 `action=set`。
@@ -103,8 +103,8 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 
 ### 8) device：实时协作设备管理（Live Sync）
 
-- 列出已发现设备：`sync-vault:device action=ls`
-- 发送消息（可能打扰他人）：`sync-vault:device action=send peerId=<id|all> message=<text>`
+- 列出已发现设备：`obsidian sync-vault:device action=ls`
+- 发送消息（可能打扰他人）：`obsidian sync-vault:device action=send peerId=<id|all> message=<text>`
 
 安全约束：
 - `send` 仅在用户明确要求时使用；默认只做 `ls` 观察。
@@ -112,15 +112,15 @@ description: "Use Sync Vault CLI commands (sync-vault:list/search/read/info/doct
 ## 典型任务模板
 
 ### A. “帮我找云端某类文件并列出最近修改的 50 个”
-1. `sync-vault:info cloud=<cloud>`
-2. `sync-vault:list path=<path> cloud=<cloud> recursive=true type=<type> limit=50 offset=0`
+1. `obsidian sync-vault:info cloud=<cloud>`
+2. `obsidian sync-vault:list path=<path> cloud=<cloud> recursive=true type=<type> limit=50 offset=0`
 
 ### B. “搜索关键词，必要时翻页直到找到目标”
-1. `sync-vault:search query=<q> cloud=<cloud> limit=20 offset=0`
+1. `obsidian sync-vault:search query=<q> cloud=<cloud> limit=20 offset=0`
 2. 若 `hasMore=true` 且未找到，继续 `offset=<nextOffset>`
 
 ### C. “读取并摘要某个文档”
-1. `sync-vault:read path=<filePath> cloud=<cloud>`
+1. `obsidian sync-vault:read path=<filePath> cloud=<cloud>`
 2. 若输出提示被截断或 PDF 被拒绝：提示用户升级/改用其他来源。
 
 ## 错误处理与回退策略
